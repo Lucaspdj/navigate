@@ -5,35 +5,6 @@ if($mobile){
 }else{
     include "includes/header.inc.php";
 }
-$findContent = explode("/", $GET_URL);
-$findContent = explode("-", $findContent[3]);
-if((is_numeric($findContent[0])) && $findContent[0]>0){
-	$HP = new HP(0);
-	$Conteudo = new Conteudo($findContent[0]);
-	$dados = $Conteudo->get($findContent[0]);
-	// if(!$dados){
-	// 	$core->redirectTo("/home");
-	// 	die();
-	// }
-	
-	$getCross = $Conteudo->getCross($dados['id']);
-	$cross1 = null;
-	$cross2 = null;
-	
-	if($getCross[0]){
-		$cross1 = new Conteudo(null);
-		$cross1 = $cross1->get($getCross[0]['conteudo_vinculado']);
-	}
-	if($getCross[1]){
-		$cross2 = new Conteudo(null);
-		$cross2 = $cross2->get($getCross[1]['conteudo_vinculado']);
-	}
-	
-}
-else{
-	// $core->redirectTo("/home");
-	// die();
-}
 ?>
 
 
