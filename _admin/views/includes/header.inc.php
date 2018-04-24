@@ -18,7 +18,7 @@
 
         <!-- Custom Fonts -->
         <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
-		
+        <script data-require="mustache.js@0.7.2" data-semver="0.7.2" src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.js"></script>
 		<script src="js/ckeditor/ckeditor.js"></script>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
