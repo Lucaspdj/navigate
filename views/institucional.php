@@ -8,17 +8,19 @@ if($mobile){
 ?>
 
 
-<div class="banner_internas"><img src="img/internas/<?php echo $dados['banner'];?>"></div>
+<div class="banner_internas"></div>
 
 <div class="internas container clearfix">
 	
 	<div class="breadcrumbs">
 		<a href="/home">HOME</a> &nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
-		<a href="/secao/<?php echo $core->normalizaUrl($dados['secoes_id']);?>-<?php echo $core->normalizaUrl($dados['secao']);?>"><?php echo strtoupper($dados['secao']);?></a> &nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
-		<span><?php echo strtoupper($dados['titulo']);?></span>
+		<a href="/institucionais/" >Institucionais</a> &nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
+		<span>Empresa</span>
 	</div>
 	
-	<h2 class="titulo-hp"><?php echo $dados['titulo'];?></h2><br>
+	<h2 class="titulo-hp">
+	<wp-expose action="buscarpaginas" motor="Principal" idComp="24" propiedade="titulo" />
+	</h2><br>
 	
 	<div class="row">
 		<div class="<?php
@@ -28,8 +30,7 @@ if($mobile){
 			<div class="destaques destaque-central-borda-inferior">
 				<img class="destaque_img" src="/img/internas/<?php echo $dados['img_destaque'];?>">
 				<div class="destaque-central">
-					<h2 class="destaque-central-titulo"><?php echo htmlentities($dados['titulo']);?></h2>
-					<div class="destaque-central-texto"><?php echo str_replace("script>","scr1pt >",$dados['destaque']);?></div>
+				<wp-expose action="buscarpaginas" motor="Principal" idComp="24" propiedade="conteudo" />
 				</div>
 			</div>
 		</div>
@@ -113,76 +114,24 @@ if($mobile){
 	</div>
 	
 	<p class="clearfix"><br class="clear"></p>
-	<div class="col-md-12 destaques" style="margin:0;padding:0">
-		<div id="pacotes-abas">
-			<a href="javascript:void(0)" class="aba-roteiro aba-ativa" onclick="$('#o-que-inclui').fadeOut('fast');$('#roteiro').fadeIn();$('.aba-roteiro').addClass('aba-ativa');$('.aba-o-que-inclui').removeClass('aba-ativa');">Roteiro</a>
-			<a href="javascript:void(0)" class="aba-o-que-inclui" onclick="$('#roteiro').fadeOut('fast');$('#o-que-inclui').fadeIn();$('.aba-o-que-inclui').addClass('aba-ativa');$('.aba-roteiro').removeClass('aba-ativa');">O que inclui</a>
-			<?php
-				$url = "/institucional/".$core->normalizaUrl($dados['secao'])."/".$dados['id']."-".$core->normalizaUrl($dados['titulo']);
-			?>
-			<div id="roteiro" class="abas">
-				<?php echo str_replace("script>","scr1pt >",$dados['aba_roteiro']);?>
-				<div class="clearfix">
-					
-					<p class="text-center"><br>
-					<?php 
-						if(!empty($dados['pdf_file'])){
-					?>
-					<a href="/download/<?php echo $dados['pdf_file'];?>" target="_blank" class="btn btn-primary btn-round-lg btn-lg btn-veja-mais">Baixar roteiro</a>
-					<?php
-						}
-					?>
-					<button type="button" class="btn btn-primary btn-round-lg btn-lg btn-compartilhar" onclick="$('#share_buttons_3').fadeIn();">Compartilhar</button>
-					<a href="javascript:void(0);" data-featherlight="#receber-orcamento" class="btn btn-primary btn-round-lg btn-lg btn-veja-mais">Receber Orçamento</a>
-					<div class="share-buttons" id="share_buttons_3" style="left:40%">
-						<a href="http://www.facebook.com/sharer.php?u=<?php echo $_SERVER['SERVER_NAME'].$url;?>" target="_blank">
-							<img src="img/icons/facebook.png" alt="Facebook" />
-						</a>
-						<a href="https://plus.google.com/share?url=<?php echo $_SERVER['SERVER_NAME'].$url;?>" target="_blank">
-							<img src="img/icons/google.png" alt="Google" />
-						</a>
-						<a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=<?php echo $_SERVER['SERVER_NAME'].$url;?>" target="_blank">
-							<img src="img/icons/linkedin.png" alt="LinkedIn" />
-						</a>
-						<a href="https://twitter.com/share?url=<?php echo $url;?>&amp;text=<?php echo $dados['titulo'];?>" target="_blank">
-							<img src="img/icons/twitter.png" alt="Twitter" />
-						</a>
-					</div></p>
-					<p class="clearfix"><br class="clear"></p>
-					<div class="lightbox" id="receber-orcamento">
-						<form method="POST">
-							<h2 class="titulo">Receber orçamento para "<?php echo $dados['titulo'];?>" </h2>
-							<br>
-							<div class="form-group">
-								<label for="orcamento_nome">Seu nome: </label>
-								<input required value="" id="orcamento_nome" name="orcamento_nome" class="form-control" placeholder="Digite seu nome" maxlength="150">
-							</div>
-							<div class="form-group">
-								<label for="orcamento_email">Seu Email: </label>
-								<input required value="" id="orcamento_email" name="orcamento_email" class="form-control" placeholder="Digite seu Email" maxlength="150">
-							</div>
-							<div class="form-group">
-								<label for="orcamento_celular">Seu Telefone: </label>
-								<input required value="" id="orcamento_celular" name="orcamento_celular" class="form-control" placeholder="Digite seu Telefone" maxlength="50">
-							</div>
-							<p class="center-block text-center">
-							<button type="button" class="btn btn-primary">Solicitar orçamento</button>
-							</p>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div id="o-que-inclui" class="abas none">
-				<?php echo str_replace("script>","scr1pt >",$dados['aba_oque_inclui']);?>
-			</div>
-		</div>
-	</div>
+	<div class="col-md-12 destaques" style="margin:0;padding:0"></div>
 	<p class="clearfix"><br class="clear"></p>
 	
 	<br><br>
 </div>
-
 <?php include "includes/footer.inc.php"; ?>
+<script src="js/wp/wp.js"></script>
+<script src="js/wp/Motors/Principal.js"></script>
+
+<script>
+$(document).ready(function() {
+	var a = window.location.pathname.split("/")
+
+	$("wp-expose").attr("idComp",a[2]);
+
+
+});
+</script>
 <script src="plugins/featherlight/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
